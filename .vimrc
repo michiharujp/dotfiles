@@ -144,6 +144,8 @@ nnoremap so <C-w>_<C-w>|
 nnoremap sO <C-w>=
 nnoremap st :<C-u>tabnew<CR>
 nnoremap sT :<C-u>Unite tab<CR>
+nnoremap + <C-a>
+nnoremap - <C-x>
 autocmd ColorScheme * highlight LineNr ctermfg = 244
 
 " submodeによるウィンドウサイズの
