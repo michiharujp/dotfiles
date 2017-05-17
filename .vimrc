@@ -26,10 +26,9 @@ if dein#load_state(s:dein_dir)
   call dein#add('hail2u/vim-css3-syntax')
   call dein#add('jelera/vim-javascript-syntax')
   call dein#add('hokaccha/vim-html5validator')
+  call dein#add('pasela/unite-webcolorname')
   call dein#add('mattn/emmet-vim')
   call dein#add('Shougo/unite.vim')
-  call dein#add('lilydjwg/colorizer')
-  call dein#add('pasela/unite-webcolorname')
   call dein#add('tpope/vim-surround')
   call dein#add('kana/vim-submode')
   call dein#add('cohama/lexima.vim')
@@ -45,58 +44,48 @@ filetype plugin indent on
 syntax enable
 
 " 画面表示の設定
-
 set number
-set cursorline     " カーソル行の背景色を変える
-set laststatus=2   " ステータス行を常に表示
-set cmdheight=2    " メッセージ表示欄を2行確保
-set showmatch      " 対応する括弧を強調表示
-set helpheight=999 " ヘルプを画面いっぱいに開く
-set list           " 不可視文字を表示
+set cursorline
+set laststatus=2
+set cmdheight=2
+set showmatch
+set helpheight=999
+set list
 set background=dark
 colorscheme hybrid
-" カーソル移動関連の設定
 
-set backspace=indent,eol,start " Backspaceキーの影響範囲に制限を設けない
-set whichwrap=b,s,h,l,<,>,[,]  " 行頭行末の左右移動で行をまたぐ
-set scrolloff=8                " 上下8行の視界を確保
-set sidescrolloff=16           " 左右スクロール時の視界を確保
-set sidescroll=1               " 左右スクロールは一文字づつ行う
+" カーソル移動関連の設定
+set backspace=indent,eol,start
+set whichwrap=b,s,h,l,<,>,[,]
+set scrolloff=8
+set sidescrolloff=16
+set sidescroll=1
 
 " ファイル処理関連の設定
-
-set confirm    " 保存されていないファイルがあるときは終了前に保存確認
-set hidden     " 保存されていないファイルがあるときでも別のファイルを開くことが出来る
-set autoread   "外部でファイルに変更がされた場合は読みなおす
-set nobackup   " ファイル保存時にバックアップファイルを作らない
-set noswapfile " ファイル編集中にスワップファイルを作らない
+set confirm
+set hidden
+set autoread
+set nobackup
+set noswapfile
 
 " 検索/置換の設定
-
-set hlsearch   " 検索文字列をハイライトする
-set incsearch  " インクリメンタルサーチを行う
-set ignorecase " 大文字と小文字を区別しない
-set smartcase  " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
-set wrapscan   " 最後尾まで検索を終えたら次の検索で先頭に移る
-set gdefault   " 置換の時 g オプションをデフォルトで有効にする
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set wrapscan
 
 " タブ/インデントの設定
-
-set expandtab     " タブ入力を複数の空白入力に置き換える
-set tabstop=2     " 画面上でタブ文字が占める幅
-set shiftwidth=2  " 自動インデントでずれる幅
-set softtabstop=2 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
-set autoindent    " 改行時に前の行のインデントを継続する
-set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-
-" コマンドラインの設定
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set smartindent
 
 " コマンドラインモードでTABキーによるファイル名補完を有効にする
 set wildmenu wildmode=list:longest,full
-" コマンドラインの履歴を10000件保存する
 set history=10000
-
-" ビープの設定
 
 "ビープ音すべてを無効にする
 set visualbell t_vb=
@@ -128,38 +117,54 @@ call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " ファイル移動時_キーマッピング
-nnoremap s <Nop>
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sH <C-w>H
-nnoremap sr <C-w>r
-nnoremap s= <C-w>=
-nnoremap sw <C-w>w
-nnoremap so <C-w>_<C-w>|
-nnoremap sO <C-w>=
-nnoremap st :<C-u>tabnew<CR>
-nnoremap sT :<C-u>Unite tab<CR>
-nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap <space> <Nop>
+nnoremap <space>j <C-w>j
+nnoremap <space>k <C-w>k
+nnoremap <space>l <C-w>l
+nnoremap <space>h <C-w>h
+nnoremap <space>J <C-w>J
+nnoremap <space>K <C-w>K
+nnoremap <space>L <C-w>L
+nnoremap <space>H <C-w>H
+nnoremap <space>r <C-w>r
+nnoremap <space>= <C-w>=
+nnoremap <space>w <C-w>w
+nnoremap <space>o <C-w>_<C-w>|
+nnoremap <space>O <C-w>=
+nnoremap <space>t :<C-u>tabnew<CR>
+nnoremap <space>T :<C-u>Unite tab<CR>
 autocmd ColorScheme * highlight LineNr ctermfg = 244
 
 " submodeによるウィンドウサイズの
-call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#enter_with('bufmove', 'n', '', '<space>>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', '<space><', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', '<space>+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', '<space>-', '<C-w>-')
 call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
+" 数の増減を行う
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" Emmetのキーバインド
 imap <C-e> <C-y>,
+
+" カーソル移動のキーマップ
+nnoremap j gj
+nnoremap k gk
 inoremap <C-h> <left>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-l> <right>
+
+" set 系コマンド
+nnoremap <C-p>p :<C-u>set paste
+
+" searchとペーストモード解除
+nnoremap <Esc><Esc> :<C-u>noh<CR>:<C-u>set nopaste<CR>
+
+" YとDとCの範囲揃えにする
+nnoremap Y v$y
