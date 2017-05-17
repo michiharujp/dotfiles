@@ -84,7 +84,8 @@ set autoindent
 set smartindent
 
 " コマンドラインモードでTABキーによるファイル名補完を有効にする
-set wildmenu wildmode=list:longest,full
+set wildmenu
+set wildmode=full
 set history=10000
 
 "ビープ音すべてを無効にする
@@ -161,10 +162,10 @@ inoremap <C-k> <up>
 inoremap <C-l> <right>
 
 " set 系コマンド
-nnoremap <C-p>p :<C-u>set paste
+nnoremap <C-p>p :<C-u>set paste<CR>
 
 " searchとペーストモード解除
 nnoremap <Esc><Esc> :<C-u>noh<CR>:<C-u>set nopaste<CR>
 
-" YとDとCの範囲揃えにする
+" yとdとcの範囲揃えにする
 nnoremap Y v$y
