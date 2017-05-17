@@ -30,7 +30,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('mattn/emmet-vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('tpope/vim-surround')
-  call dein#add('kana/vim-submode')
   call dein#add('cohama/lexima.vim')
   if dein#check_install()
     call dein#install()
@@ -74,6 +73,7 @@ set incsearch
 set ignorecase
 set smartcase
 set wrapscan
+set path=~/**
 
 " タブ/インデントの設定
 set expandtab
@@ -86,7 +86,7 @@ set smartindent
 " コマンドラインモードでTABキーによるファイル名補完を有効にする
 set wildmenu
 set wildmode=full
-set history=10000
+set history=1000
 
 "ビープ音すべてを無効にする
 set visualbell t_vb=
@@ -118,7 +118,11 @@ call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " ファイル移動時_キーマッピング
+nnoremap s <nop>
+nnoremap S <nop>
 nnoremap <space> <Nop>
+nnoremap <space>c <C-w>c
+nnoremap <space>o <C-w>o
 nnoremap <space>j <C-w>j
 nnoremap <space>k <C-w>k
 nnoremap <space>l <C-w>l
@@ -127,24 +131,19 @@ nnoremap <space>J <C-w>J
 nnoremap <space>K <C-w>K
 nnoremap <space>L <C-w>L
 nnoremap <space>H <C-w>H
+nnoremap <space>x <C-w>x
 nnoremap <space>r <C-w>r
 nnoremap <space>= <C-w>=
+nnoremap <space>+ <C-w>+
+nnoremap <space>- <C-w>-
+nnoremap <space>< <C-w><
+nnoremap <space>> <C-w>>
 nnoremap <space>w <C-w>w
-nnoremap <space>o <C-w>_<C-w>|
-nnoremap <space>O <C-w>=
 nnoremap <space>t :<C-u>tabnew<CR>
-nnoremap <space>T :<C-u>Unite tab<CR>
-autocmd ColorScheme * highlight LineNr ctermfg = 244
+nnoremap <space>T <C-w>T
 
-" submodeによるウィンドウサイズの
-call submode#enter_with('bufmove', 'n', '', '<space>>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', '<space><', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', '<space>+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', '<space>-', '<C-w>-')
-call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-call submode#map('bufmove', 'n', '', '<', '<C-w><')
-call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+"行をみやすく
+autocmd ColorScheme * highlight LineNr ctermfg = 244
 
 " 数の増減を行う
 nnoremap + <C-a>
@@ -155,11 +154,17 @@ imap <C-e> <C-y>,
 
 " カーソル移動のキーマップ
 nnoremap j gj
+nnoremap gj j
 nnoremap k gk
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
+nnoremap gk k
+nnoremap 0 g0
+nnoremap g0 0
+nnoremap ^ g^
+nnoremap g^ ^
+nnoremap $ g$
+nnoremap g$ $
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
 " set 系コマンド
 nnoremap <C-p>p :<C-u>set paste<CR>
@@ -169,3 +174,28 @@ nnoremap <Esc><Esc> :<C-u>noh<CR>:<C-u>set nopaste<CR>
 
 " yとdとcの範囲揃えにする
 nnoremap Y v$y
+
+" コマンドラインモードの移動設定
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+
+" バッファの移動
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
+" readonlyに強制書き込み
+cnoremap <C-w><C-w> :<C-u>w<space>!sudo<space>tee<space>%<space>><space>/dev/null
+
+" vimに矢印キーはいらない
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+cnoremap <Up> <Nop>
+cnoremap <Down> <Nop>
+cnoremap <Left> <Nop>
+cnoremap <Right> <Nop>
