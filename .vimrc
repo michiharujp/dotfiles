@@ -92,6 +92,8 @@ set history=1000
 set visualbell t_vb=
 set noerrorbells
 
+" ペーストモードのトグル
+set pastetoggle=<f5>
 " インデント色の初期設定
 let g:indent_guides_enable_on_vim_startup = 1
 
@@ -165,12 +167,6 @@ nnoremap $ g$
 nnoremap g$ $
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-
-" set 系コマンド
-nnoremap <C-p>p :<C-u>set paste<CR>
-
-" searchとペーストモード解除
-nnoremap <Esc><Esc> :<C-u>noh<CR>:<C-u>set nopaste<CR>
 
 " yとdとcの範囲揃えにする
 nnoremap Y v$y
