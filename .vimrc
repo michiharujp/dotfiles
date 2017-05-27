@@ -92,8 +92,8 @@ set history=1000
 set visualbell t_vb=
 set noerrorbells
 
-" ペーストモードのトグル
-set pastetoggle=<f5>
+set pastetoggle=<F5>
+
 " インデント色の初期設定
 let g:indent_guides_enable_on_vim_startup = 1
 
