@@ -31,6 +31,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/unite.vim')
   call dein#add('tpope/vim-surround')
   call dein#add('cohama/lexima.vim')
+  call dein#add('lervag/vimtex')
   if dein#check_install()
     call dein#install()
   endif
@@ -187,6 +188,10 @@ nnoremap <silent> ]B :blast<CR>
 cnoremap <C-w><C-w> :<C-u>w<space>!sudo<space>tee<space>%<space>><space>/dev/null
 
 " vimに矢印キーはいらない
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
