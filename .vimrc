@@ -1,43 +1,43 @@
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if !isdirectory(s:dein_repo_dir)
-  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
 if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+    call dein#begin(s:dein_dir)
 
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('w0ng/vim-hybrid')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('joshdick/onedark.vim')
-  call dein#add('tomtom/tcomment_vim')
-  call dein#add('nathanaelkane/vim-indent-guides')
-  call dein#add('bronson/vim-trailing-whitespace')
-  call dein#add('jistr/vim-nerdtree-tabs')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('othree/html5.vim')
-  call dein#add('hail2u/vim-css3-syntax')
-  call dein#add('jelera/vim-javascript-syntax')
-  call dein#add('hokaccha/vim-html5validator')
-  call dein#add('pasela/unite-webcolorname')
-  call dein#add('mattn/emmet-vim')
-  call dein#add('Shougo/unite.vim')
-  call dein#add('tpope/vim-surround')
-  call dein#add('cohama/lexima.vim')
-  call dein#add('lervag/vimtex')
-  if dein#check_install()
-    call dein#install()
-  endif
+    call dein#add('Shougo/neocomplete.vim')
+    call dein#add('w0ng/vim-hybrid')
+    call dein#add('scrooloose/nerdtree')
+    call dein#add('joshdick/onedark.vim')
+    call dein#add('tomtom/tcomment_vim')
+    call dein#add('nathanaelkane/vim-indent-guides')
+    call dein#add('bronson/vim-trailing-whitespace')
+    call dein#add('jistr/vim-nerdtree-tabs')
+    call dein#add('itchyny/lightline.vim')
+    call dein#add('othree/html5.vim')
+    call dein#add('hail2u/vim-css3-syntax')
+    call dein#add('jelera/vim-javascript-syntax')
+    call dein#add('hokaccha/vim-html5validator')
+    call dein#add('pasela/unite-webcolorname')
+    call dein#add('mattn/emmet-vim')
+    call dein#add('Shougo/unite.vim')
+    call dein#add('tpope/vim-surround')
+    call dein#add('cohama/lexima.vim')
+    call dein#add('lervag/vimtex')
+    if dein#check_install()
+        call dein#install()
+    endif
 
-  call dein#end()
-  call dein#save_state()
+    call dein#end()
+    call dein#save_state()
 endif
 
 filetype plugin indent on
@@ -78,9 +78,9 @@ set path=~/**
 
 " タブ/インデントの設定
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
 set smartindent
 
@@ -103,8 +103,8 @@ map <C-n> <plug>NERDTreeTabsToggle<CR>
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
 call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
@@ -200,3 +200,16 @@ cnoremap <Up> <Nop>
 cnoremap <Down> <Nop>
 cnoremap <Left> <Nop>
 cnoremap <Right> <Nop>
+
+" 日本語ノーマルモードキーマップ
+nnoremap あ a
+nnoremap い i
+nnoremap ｈ h
+nnoremap ｊ j
+nnoremap ｋ k
+nnoremap ｌ l
+
+augroup fileTypeCompile
+    autocmd!
+    autocmd BufWritePost *.tex :!latexmk %:p
+augroup END
