@@ -31,7 +31,6 @@ if dein#load_state(s:dein_dir)
     call dein#add('Shougo/unite.vim')
     call dein#add('tpope/vim-surround')
     call dein#add('cohama/lexima.vim')
-    call dein#add('lervag/vimtex')
     if dein#check_install()
         call dein#install()
     endif
@@ -209,7 +208,19 @@ nnoremap ｊ j
 nnoremap ｋ k
 nnoremap ｌ l
 
-augroup fileTypeCompile
+augroup fileTypeSet
     autocmd!
-    autocmd BufWritePost *.tex :!latexmk %:p
+    autocmd BufNewFile,BufRead *.py setfiletype python
+    autocmd BufNewFile,BufRead *.cpp setfiletype cplusplus
+    autocmd BufNewFile,BufRead *.c setfiletype c
+    autocmd BufNewFile,BufRead *.rb setfiletype ruby
+    autocmd BufNewFile,BufRead *.html setfiletype html
+    autocmd BufNewFile,BufRead *.css setfiletype css
+    autocmd BufNewFile,BufRead *.js setfiletype javascript
+    autocmd BufNewFile,BufRead *.php setfiletype php
 augroup END
+
+let g:tex_flavor='latex'
+
+" templateの召喚
+
