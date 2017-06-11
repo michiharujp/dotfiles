@@ -208,19 +208,13 @@ nnoremap ｊ j
 nnoremap ｋ k
 nnoremap ｌ l
 
-augroup fileTypeSet
+augroup setAutoCompile
     autocmd!
-    autocmd BufNewFile,BufRead *.py setfiletype python
-    autocmd BufNewFile,BufRead *.cpp setfiletype cplusplus
-    autocmd BufNewFile,BufRead *.c setfiletype c
-    autocmd BufNewFile,BufRead *.rb setfiletype ruby
-    autocmd BufNewFile,BufRead *.html setfiletype html
-    autocmd BufNewFile,BufRead *.css setfiletype css
-    autocmd BufNewFile,BufRead *.js setfiletype javascript
-    autocmd BufNewFile,BufRead *.php setfiletype php
+    autocmd BufWritePost *.tex :!latexmk %:p
 augroup END
 
-let g:tex_flavor='latex'
-
 " templateの召喚
+nnoremap <F2> :read ~/.vim/template/%:e
 
+" 末尾に;を追加する
+nnoremap S A;<ESC>
