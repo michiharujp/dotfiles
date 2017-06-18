@@ -214,7 +214,8 @@ augroup setAutoCompile
 augroup END
 
 " templateの召喚
-nnoremap <F2> :read ~/.vim/template/%:e
+nnoremap <F2> :read ~/.vim/template/%:e<CR>
 
-" 末尾に;を追加する
+" 末尾に;と,を追加する
 nnoremap S A;<ESC>
+nnoremap <C-s> A,<ESC>
