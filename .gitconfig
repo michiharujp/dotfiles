@@ -1,0 +1,15 @@
+[user]
+    email = teketeke0349outlook.jp
+    name = michi
+[core]
+    editor = vim
+[alias]
+    cm = commit
+    ps = push
+    pl = pull
+    br = branch
+    rm = remote
+    ch = checkout
+    mr = merge
+    df = diff
+    st = status
