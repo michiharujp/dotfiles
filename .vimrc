@@ -17,7 +17,6 @@ if dein#load_state(s:dein_dir)
     call dein#add('w0ng/vim-hybrid')
     call dein#add('scrooloose/nerdtree')
     call dein#add('joshdick/onedark.vim')
-    call dein#add('tomtom/tcomment_vim')
     call dein#add('nathanaelkane/vim-indent-guides')
     call dein#add('bronson/vim-trailing-whitespace')
     call dein#add('jistr/vim-nerdtree-tabs')
@@ -38,6 +37,20 @@ if dein#load_state(s:dein_dir)
     call dein#end()
     call dein#save_state()
 endif
+
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+    let buffer_numbers = {}
+    for quickfix_item in getqflist()
+        let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufname'])
+    endfor
+    return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+
+command! Cwords execute CountWords
+function! CountWords()
+    execute "%s/function/&/gn"
+endfunction
 
 filetype plugin indent on
 syntax enable
@@ -184,7 +197,7 @@ nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
 " readonlyに強制書き込み
-cnoremap <C-w><C-w> :<C-u>w<space>!sudo<space>tee<space>%<space>><space>/dev/null
+nnoremap <C-w><C-w> :<C-u>w<space>!sudo<space>tee<space>%<space>><space>/dev/null
 
 " vimに矢印キーはいらない
 inoremap <Up> <Nop>
@@ -201,16 +214,37 @@ cnoremap <Left> <Nop>
 cnoremap <Right> <Nop>
 
 " 日本語ノーマルモードキーマップ
-nnoremap あ a
-nnoremap い i
-nnoremap ｈ h
-nnoremap ｊ j
-nnoremap ｋ k
-nnoremap ｌ l
+nmap あ a
+nmap い i
+nmap う u
+nmap ｎ n
+nmap ｈ h
+nmap ｊ j
+nmap ｋ k
+nmap ｌ l
+nmap ｘ x
+nmap ｒ r
+nmap ｇ g
+nmap ｇｇ gg
+nmap １ 1
+nmap ２ 2
+nmap ３ 3
+nmap ４ 4
+nmap ５ 5
+nmap ６ 6
+nmap ７ 7
+nmap ８ 8
+nmap ９ 9
+nmap ０ 0
+nmap ・ /
+nmap ： :
 
+"auto compileの設定
 augroup setAutoCompile
     autocmd!
-    autocmd BufWritePost *.tex :!latexmk %:p
+    autocmd BufWritePost *.tex :lcd %:h | :!latexmk %:p
+    autocmd BufWritePost *.c :lcd %:h |:!gcc %:p
+    autocmd BufWritePost *.R :lcd %:h |:!R -f %:p
 augroup END
 
 " templateの召喚
@@ -219,3 +253,11 @@ nnoremap <F2> :read ~/.vim/template/%:e<CR>
 " 末尾に;と,を追加する
 nnoremap S A;<ESC>
 nnoremap <C-s> A,<ESC>
+
+" 検索の協調を無効化する
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR>
+
+nnoremap H 0
+nnoremap L $
+
+
