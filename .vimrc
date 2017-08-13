@@ -245,6 +245,7 @@ augroup setAutoCompile
     autocmd BufWritePost *.tex :lcd %:h | :!latexmk %:p
     autocmd BufWritePost *.c :lcd %:h |:!gcc %:p
     autocmd BufWritePost *.R :lcd %:h |:!R -f %:p
+    autocmd BufWritePost *.cpp :lcd %:h |:!g++ %:p
 augroup END
 
 " templateの召喚
