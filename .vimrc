@@ -212,6 +212,10 @@ cnoremap <Up> <Nop>
 cnoremap <Down> <Nop>
 cnoremap <Left> <Nop>
 cnoremap <Right> <Nop>
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
 
 " 日本語ノーマルモードキーマップ
 nmap あ a
@@ -245,7 +249,7 @@ augroup setAutoCompile
     autocmd BufWritePost *.tex :lcd %:h | :!latexmk %:p
     autocmd BufWritePost *.c :lcd %:h |:!gcc %:p
     autocmd BufWritePost *.R :lcd %:h |:!R -f %:p
-    autocmd BufWritePost *.cpp :lcd %:h |:!g++ %:p
+    autocmd BufWritePost *.cpp :lcd %:h |:!g++ -std=c++11 %:p
 augroup END
 
 " templateの召喚
@@ -260,5 +264,3 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR>
 
 nnoremap H 0
 nnoremap L $
-
-

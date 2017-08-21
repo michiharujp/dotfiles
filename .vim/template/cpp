@@ -1,10 +1,7 @@
-#include<iostream>
-#include<vector>
-#include<assert.h>
-
+#include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 
 int main(void) {
-    int i,j;
     return 0;
 }
