@@ -64,6 +64,9 @@ set showmatch
 set helpheight=999
 set list
 set background=dark
+
+autocmd ColorScheme * highlight LineNr ctermfg=244
+
 colorscheme hybrid
 
 " カーソル移動関連の設定
@@ -157,9 +160,6 @@ nnoremap <space>w <C-w>w
 nnoremap <space>t :<C-u>tabnew<CR>
 nnoremap <space>T <C-w>T
 
-"行をみやすく
-autocmd ColorScheme * highlight LineNr ctermfg = 244
-
 " 数の増減を行う
 nnoremap + <C-a>
 nnoremap - <C-x>
@@ -248,6 +248,12 @@ augroup setAutoCompile
     autocmd BufWritePost *.cpp :lcd %:h |:!g++ %:p
 augroup END
 
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 " templateの召喚
 nnoremap <F2> :read ~/.vim/template/%:e<CR>
 
@@ -260,5 +266,3 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR>
 
 nnoremap H 0
 nnoremap L $
-
-
