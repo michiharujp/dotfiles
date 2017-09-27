@@ -69,6 +69,9 @@ autocmd ColorScheme * highlight LineNr ctermfg=244
 
 colorscheme hybrid
 
+" clipboard連携
+set clipboard+=unnamed
+
 " カーソル移動関連の設定
 set backspace=indent,eol,start
 set whichwrap=b,s,h,l,<,>,[,]
@@ -255,7 +258,7 @@ augroup fileTypeIndent
 augroup END
 
 " templateの召喚
-nnoremap <F2> :read ~/.vim/template/%:e<CR>
+nnoremap <tab> :read ~/.vim/template/%:e<CR>
 
 " 末尾に;と,を追加する
 nnoremap S A;<ESC>
