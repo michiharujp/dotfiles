@@ -38,20 +38,6 @@ if dein#load_state(s:dein_dir)
     call dein#save_state()
 endif
 
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-function! QuickfixFilenames()
-    let buffer_numbers = {}
-    for quickfix_item in getqflist()
-        let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufname'])
-    endfor
-    return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-endfunction
-
-command! Cwords execute CountWords
-function! CountWords()
-    execute "%s/function/&/gn"
-endfunction
-
 filetype plugin indent on
 syntax enable
 
@@ -104,8 +90,11 @@ set history=1000
 "ビープ音すべてを無効にする
 set visualbell t_vb=
 set noerrorbells
-
 set pastetoggle=<F5>
+
+" スペルチェックを行う。
+set spellfile=~/.vim/spell/en_utf-8.add
+set spelllang=en,cjk
 
 " インデント色の初期設定
 let g:indent_guides_enable_on_vim_startup = 1
@@ -165,7 +154,7 @@ nnoremap + <C-a>
 nnoremap - <C-x>
 
 " Emmetのキーバインド
-imap <C-e> <C-y>,
+imap <C-y><C-y> <C-y>,
 
 " カーソル移動のキーマップ
 nnoremap j gj
@@ -196,7 +185,7 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
-" readonlyに強制書き込み
+" read only に強制書き込み
 nnoremap <C-w><C-w> :<C-u>w<space>!sudo<space>tee<space>%<space>><space>/dev/null
 
 " vimに矢印キーはいらない
@@ -257,7 +246,7 @@ nnoremap <F2> :read ~/.vim/template/%:e<CR>
 
 " 末尾に;と,を追加する
 nnoremap S A;<ESC>
-nnoremap <C-s> A,<ESC>
+nnoremap SS A,<ESC>
 
 " 検索の協調を無効化する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR>
