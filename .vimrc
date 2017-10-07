@@ -30,6 +30,7 @@ if dein#load_state(s:dein_dir)
     call dein#add('Shougo/unite.vim')
     call dein#add('tpope/vim-surround')
     call dein#add('cohama/lexima.vim')
+    call dein#add('slim-template/vim-slim')
     if dein#check_install()
         call dein#install()
     endif
@@ -248,6 +249,7 @@ augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.slim setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 " templateの召喚
@@ -262,3 +264,6 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR>
 
 nnoremap H 0
 nnoremap L $
+
+inoremap <% <%%><ESC>hi
+inoremap <%= <%=  %><ESC>2hi
