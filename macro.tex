@@ -1,0 +1,25 @@
+\usepackage[dvipdfmx,hiresbb]{graphicx}
+\usepackage[top=20truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage{fancyhdr, lastpage}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{bmpsize}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\makeatletter
+    \renewcommand{\theequation}{%
+    \thesection.\arabic{equation}}
+    \@addtoreset{equation}{section}
+    \renewcommand{\thefigure}{%
+    \thesection.\arabic{figure}}
+    \@addtoreset{figure}{section}
+    \renewcommand{\thetable}{%
+    \thesection.\arabic{table}}
+    \@addtoreset{table}{section}
+\makeatother
+\fancypagestyle{kisozi}{
+    \rhead{}
+    \lhead{}
+    \rfoot{\thepage/\pageref{LastPage}}
+    \cfoot{}
+    \renewcommand{\headrulewidth}{0pt}
+}
