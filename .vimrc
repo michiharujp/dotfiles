@@ -31,6 +31,7 @@ if dein#load_state(s:dein_dir)
     call dein#add('tpope/vim-surround')
     call dein#add('cohama/lexima.vim')
     call dein#add('slim-template/vim-slim')
+    call dein#add('kchmck/vim-coffee-script')
     if dein#check_install()
         call dein#install()
     endif
@@ -250,6 +251,8 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.slim setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.coffee setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 " templateの召喚
