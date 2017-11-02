@@ -1,19 +1,4 @@
 \documentclass[11pt,a4paper]{jsarticle}
-\usepackage[dvipdfmx,hiresbb]{graphicx}
-\usepackage[top=20truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
-\usepackage{fancyhdr, lastpage}
-\usepackage{bmpsize}
-\fancypagestyle{kisozi}{
-    \rhead{}
-    \lhead{}
-    \rfoot{\thepage/\pageref{LastPage}}
-    \cfoot{}
-    \renewcommand{\headrulewidth}{0pt}
-}
-\pagestyle{kisozi}
+\input{/home/michi/macro}
 \begin{document}
-\section{目的}
-\section{理論}
-\section{結果}
-\section{考察}
 \end{document}
